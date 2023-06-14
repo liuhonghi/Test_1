@@ -25,7 +25,9 @@ void game()
     DisplayBoard(show, ROW, COL);
     
     SetMine(mine,ROW,COL);
-    DisplayBoard(mine, ROW, COL);
+    //DisplayBoard(mine, ROW, COL);
+    
+    FindMine(mine,show, ROW, COL);
 }
 
 void menu()
