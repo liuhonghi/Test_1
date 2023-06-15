@@ -13,67 +13,220 @@
 #include "add.h"
 #include "game.h"
 
-//扫雷----------------
-void game()
-{
-    char mine[ROWS][COLS] = {0};
-    char show[ROWS][COLS] = {0};
-  
-    InitBoard(mine, ROWS, COLS,'0');
-    InitBoard(show, ROWS, COLS,'*');
-
-    DisplayBoard(show, ROW, COL);
-    
-    SetMine(mine,ROW,COL);
-    //DisplayBoard(mine, ROW, COL);
-    
-    FindMine(mine,show, ROW, COL);
-}
-
-void menu()
-{
-    printf("**************************\n");
-    printf("********* 1.play *********\n");
-    printf("********* 0.exit *********\n");
-    printf("**************************\n");
-}
-
-void test()
-{
-    int input = 0;
-    srand((unsigned int) time(NULL));
-    do
-    {
-        menu();
-        printf("请选择>:");
-        scanf("%d",&input);
-        switch(input)
-        {
-            case 1:
-            {
-                game();
-                break;
-            }
-            case 0:
-            {
-                printf("退出游戏\n");
-            }
-            default:
-                printf("选择错误，请重新选择\n");
-        }
-                
-    }
-    while(input);
-        
-}
 
 
-int main()
-{
-    test();
-    return 0;
-}
+//操作符详解
+//1、算术操作符 -     + - * / %
+// /取商  %取余 - % 两端必须为整数
 
+//2、移位操作符 - 二进制位移动    //左移 - 左边丢弃，右边补0    //右移 - 右边丢弃，左边补0
+// << - 左移操作符    >> - 右移操作符
+//int main()
+//{
+//    int a = 3;
+//    int b = a << 1;
+//    //int b = a >> 1;
+//    printf("b = %d\n",b);
+//    return 0;
+//}
+// int main()
+//{
+//     int a = -1;
+//     int b = a>>1;
+//     printf("b=%d\n",b);
+//     return 0;
+// }
+
+//3、位操作符（必须整数） - 按位与&            按位或|           按位异或^
+//                  有0为0，同1为1      有1为1；同0为0     不同为1，相同为0
+//int main()
+//{
+//    int a = 3;// - 011
+//    int b = 5;// - 101
+//    //int c = a & b; // = 1
+//    //int c = a | b; // = 7
+//    //int c = a ^ b; // = 6
+//    printf("c = %d\n",c);
+//    return 0;
+//}
+//
+//位操作符面试题 - 交换两个变量，不能创建中间变量，a=3，b=5，交换后a=5，b=3
+//int main()
+//{
+//    int a = 3;//011
+//    int b = 5;//101
+////    //方法一 - 有缺陷，因为int有最大值，当a和b太大时，会溢出
+////    a = a+b;
+////    b = a - b;
+////    a = a - b;
+//    //方法二 - 异或
+//    //0^a=a  a^a=0 a^a^a=a
+//    a = a ^ b;//110 - 想象成密码，再异或b，能得到a
+//    b = a ^ b;//011
+//    a = a ^ b;//101
+//    printf("a = %d\n",a);
+//    printf("b = %d\n",b);
+//    return 0;
+//}
+//
+//移位操作符和位操作符例题：编写一个代码，求一个数的二进制数中1的个数
+//int main()
+//{
+//    int count = 0;
+//    int a = 13;//1101
+//
+//    while(a>0)
+//    {
+//        if(a&1 == 1 )
+//        {
+//            count ++;
+//        }
+//        a = a>>1;
+//    }
+//        printf("count = %d\n",count);
+//    return 0;
+//}
+
+//--------------------------------------------------------------------
+
+//扫雷
+//void game()
+//{
+//    char mine[ROWS][COLS] = {0};
+//    char show[ROWS][COLS] = {0};
+//
+//    InitBoard(mine, ROWS, COLS,'0');
+//    InitBoard(show, ROWS, COLS,'*');
+//
+//    DisplayBoard(show, ROW, COL);
+//
+//    SetMine(mine,ROW,COL);
+//    //DisplayBoard(mine, ROW, COL);
+//
+//    FindMine(mine,show, ROW, COL);
+//}
+//
+//void menu()
+//{
+//    printf("**************************\n");
+//    printf("********* 1.play *********\n");
+//    printf("********* 0.exit *********\n");
+//    printf("**************************\n");
+//}
+//
+//void test()
+//{
+//    int input = 0;
+//    srand((unsigned int) time(NULL));
+//    do
+//    {
+//        menu();
+//        printf("请选择>:");
+//        scanf("%d",&input);
+//        switch(input)
+//        {
+//            case 1:
+//            {
+//                game();
+//                break;
+//            }
+//            case 0:
+//            {
+//                printf("退出游戏\n");
+//            }
+//            default:
+//                printf("选择错误，请重新选择\n");
+//        }
+//
+//    }
+//    while(input);
+//
+//}
+//
+//
+//int main()
+//{
+//    test();
+//    return 0;
+//}
+//-------------------------------------------------------------------
+
+//三子棋
+//void game()
+//{
+//    char ret = 0;
+//    char board [ROW][COL] = {0};
+//    //初始化
+//    InitBoard(board,ROW,COL);
+//    DisplayBoard(board,ROW,COL);
+//    while(1)
+//    {
+//        PlayerBoard(board,ROW,COL);
+//        DisplayBoard(board,ROW,COL);
+//        ret = IsWin(board,ROW,COL);
+//        if(ret != 'C')
+//        {
+//            break;
+//        }
+//        ComputerBoard(board,ROW,COL);
+//        DisplayBoard(board,ROW,COL);
+//        ret = IsWin(board,ROW,COL);
+//        if(ret != 'C')
+//        {
+//            break;
+//        }
+//    }
+//    if(ret == '*')
+//    {
+//        printf("玩家win\n");
+//    }
+//    else if (ret == '#')
+//    {
+//        printf("电脑win\n");
+//    }
+//    else
+//    {
+//        printf("平局\n");
+//    }
+//}
+//void menu()
+//{
+//    printf("********************\n");
+//    printf("*** 1.play 0.exit***\n");
+//    printf("********************\n");
+//}
+//
+//void test()
+//{
+//    srand((unsigned int) time(NULL));
+//    int input = 0;
+//    do
+//    {
+//        menu();
+//        printf("请选择:");
+//        scanf("%d",&input);
+//        switch(input)
+//        {
+//            case 1:
+//                game();
+//                break;
+//            case 0:
+//                printf("退出游戏\n");
+//                break;
+//            default:
+//                printf("请重新选择!\n");
+//                break;
+//        }
+//    }
+//    while(input);
+//}
+////三子棋游戏
+//int main()
+//{
+//    test();
+//    return 0;
+//}
+//-------------------------------------------------------------------------
 
 //数组作为函数参数 - 冒泡排序函数
 //void Bubble_soft(int arr[],int sz)
