@@ -87,6 +87,85 @@
 //    return 0;
 //}
 
+//sizeof()
+//int main()
+//{
+//    short s = 5;  //在内存中开辟两个字节的空间。
+//    int a = 10;
+//    printf("%d\n",sizeof(s = a + 2));//2  //sizeof括号里的表达式不参与运算
+//    printf("%d\n",s);//5
+//    return 0;
+//}
+
+//～ - 按位取反
+//int main()
+//{
+//    int a = -1;
+//    int b = ~a;  //对补码全部按位取反
+//    printf("%d\n",b);
+//    return 0;
+//}
+
+//& - 取地址操作符
+//* - 解引用操作符/间接访问操作符
+//int main()
+//{
+//    int a = 10;
+//    printf("%p\n",&a); //取地址
+//    int* pa = &a; //pa用来存放地址 - 指针变量
+//    *pa = 20; // * - 解引用操作符，此时*pa就是a
+//    printf("%d\n",a);
+//    return 0;
+//}
+
+//数组传参时，传的是指针 - 首元素地址
+//void test1(int arr[])
+//{
+//    printf("%d\n",sizeof(arr));
+//}
+//
+//void test2(char ch[])
+//{
+//    printf("%d\n",sizeof(ch));
+//}
+//
+//int main()
+//{
+//    int arr[10] = {0};
+//    char ch[10] = {0};
+//    printf("%d\n",sizeof(arr)); //40
+//    printf("%d\n",sizeof(ch)); //10
+//
+//    test1(arr);
+//    test2(ch);
+//    return 0;
+//}
+
+
+//逗号表达式 - 整个表达式结果为最后一个表达式的结果
+//int main()
+//{
+//    int a = 3;
+//    int b = 5;
+//    int c = 3;
+//    int d = (c = 5,a = c -1,c+=5);
+//    printf("d = %d\n",d);
+//    return 0;
+//}
+//
+//a = get_val();
+//count_val(a);
+//while(a>0)
+//{
+//    a = get_val();
+//    count_val(a);
+//}
+//
+//可写成
+//while(a = get_val(),count_val(a),a>0)
+//{
+//
+//}
 //--------------------------------------------------------------------
 
 //扫雷
@@ -227,7 +306,52 @@
 //    return 0;
 //}
 //-------------------------------------------------------------------------
-
+//
+//找出只出现一次的数 - 单身狗
+//方法一：暴力求解
+//int main()
+//{
+//    int arr[]={1,2,3,4,5,1,2,3,4};
+//    int sz = sizeof(arr)/sizeof(arr[0]);
+//    int i = 0;
+//    for(i = 0;i<sz;i++)
+//    {
+//        int j = 0;
+//        int count = 0;
+//        for(j = 0;j<sz;j++)
+//        {
+//            if(arr[i] == arr[j])
+//            {
+//                count ++;
+//            }
+//        }
+//        if(count == 1)
+//        {
+//            printf("%d\n",arr[i]);
+//            break;
+//        }
+//    }
+//
+//    return 0;
+//}
+//
+//方法二 - 异或 -同为0不同为1
+//int main()
+//{
+//
+//    int ret = 0;
+//    int i = 0;
+//    int arr[]={1,2,3,4,5,1,2,3,4};
+//    int sz = sizeof(arr)/sizeof(arr[0]);
+//    for (i=0; i<sz; i++)
+//    {
+//        ret = ret ^ arr[i];
+//    }
+//    printf("%d\n",ret);
+//    return 0;
+//}
+//-------------------------------------------------------------------
+//
 //数组作为函数参数 - 冒泡排序函数
 //void Bubble_soft(int arr[],int sz)
 //{
