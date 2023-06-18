@@ -13,6 +13,101 @@
 #include "add.h"
 #include "game.h"
 
+//2023-6-18-数组定义初始化作业
+//1、整型数组
+//用Init()初始化数组
+//用print()打印数组各个元素
+//用reverse()逆序打印各个元素
+
+//void Init(int* arr,int sz)
+//{
+//    int i = 0;
+//    for(i = 0;i<sz;i++)
+//    {
+//        arr[i] = 0;
+//    }
+//}
+//
+//void print(int* arr,int sz)
+//{
+//    int i = 0;
+//    for(i = 0;i<sz;i++)
+//    {
+//        printf("%d ",arr[i]);
+//    }
+//    printf("\n");
+//}
+//
+//void reverse(int* arr,int sz)
+//{
+//    int left = 0;
+//    int right = sz - 1;
+//    int tmp = 0;
+//    while(left < right)
+//    {
+//        tmp = arr[left];
+//        arr[left] = arr[right];
+//        arr[right] = tmp;
+//        left++;
+//        right--;
+//    }
+//}
+//
+//int main()
+//{
+//    int arr[] = {1,2,3,4,5,6,7,8,9,10};
+//    int sz = sizeof(arr)/sizeof(arr[0]);
+//
+//    print(arr,sz);
+//    reverse(arr, sz);
+//    print(arr, sz);
+//
+//    Init(arr,sz);
+//    print(arr, sz);
+//    return 0;
+//}
+
+//2、交换数组
+//将数组A中的内容和数组B中的内容进行交换（数组一样大）
+//void arrChange(int* arrA,int* arrB,int sz)
+//{
+//    int i = 0;
+//    for(i=0;i<sz;i++)
+//    {
+//        int tmp = 0;
+//        tmp = arrA[i];
+//        arrA[i] = arrB[i];
+//        arrB[i] = tmp;
+//    }
+//}
+//
+//
+//
+//
+//int main()
+//{
+//    int arrA[] = {1,2,3,4,5,6,7,8,9,10};
+//    int arrB[] = {10,9,8,7,6,5,4,3,2,1};
+//    int sz = sizeof(arrA)/sizeof(arrA[0]);
+//
+//    arrChange(arrA,arrB,sz);
+//    int i = 0;
+//    for(i = 0;i<sz;i++)
+//    {
+//        printf("%d ",arrA[i]);
+//    }
+//    printf("\n");
+//    for(i = 0;i<sz;i++)
+//    {
+//        printf("%d ",arrB[i]);
+//    }
+//    printf("\n");
+//    return 0;
+//}
+
+//3、
+
+
 //隐式类型变换 - 整型提升详解
 //例
 //int main()
