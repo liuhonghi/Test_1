@@ -12,7 +12,77 @@
 #include <time.h>
 #include "add.h"
 #include "game.h"
+//2023-6-20
+//调试技巧
 
+
+
+
+
+//-----------------------------------------------------------------------------------
+
+//2023-6-20
+//结构体初阶
+//结构体的定义和初始化
+//struct B
+//{
+//    char name[20];
+//    char sex[10];
+//};
+//
+//struct Stu
+//{
+//    struct B sb;  // 结构体的成员可以是另一个结构体
+//    char name[20];
+//    char id[20];
+//    int age;
+//}s1,s2;//此时的s1和s2也是结构体变量，是全局的
+//
+//int main()
+//{
+//    struct Stu s;//此时的s是局部的
+//    return 0;
+//}
+
+
+//结构体传参
+//struct B
+//{
+//    char c;
+//    short s;
+//    double d;
+//};
+//
+//struct Stu
+//{
+//    struct B sb;
+//    char name[20];
+//    int age;
+//    char id[20];
+//};
+//
+//void print1(struct Stu t)
+//{
+//    printf("%c %d %lf %s %d %s\n",t.sb.c,t.sb.s,t.sb.d,t.name,t.age,t.id);
+//}
+//
+//void print2(struct Stu* t)
+//{
+//    printf("%c %d %lf %s %d %s\n",t->sb.c,t->sb.s,t->sb.d,t->name,t->age,t->id);
+//}
+//
+//int main()
+//{
+//    struct Stu s = { {'w',20,3.14},"张三",30,"2005030124"};
+//    //写一个函数打印s内容
+//    print1(s); //传值调用
+//    print2(&s); //传址调用（好） - 传参效率高-只传了一个指针大小，不需要重新开辟空间
+//    //函数调用的参数压栈
+//    //栈 - 一种数据结构，先进的后出，后进的先出
+//    //压栈 - 给栈中存放数据
+//    return 0;
+//}
+//-----------------------------------------------------------------------------------
 
 //2023-6-19
 //指针初阶1
