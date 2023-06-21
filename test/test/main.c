@@ -7,14 +7,79 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <assert.h>
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
 #include "add.h"
 #include "game.h"
-//2023-6-20
-//调试技巧
 
+//模拟实现strcpy函数
+
+//方法
+//void my_strcpy(char* dest,char* src)
+//{
+//    while(*src != '\0')
+//    {
+//        *dest = *src;
+//        dest ++;
+//        src++;
+//    }
+//    *dest = *src;
+//}
+
+//优化1
+//void my_strcpy(char* dest,char* src)
+//{
+//    while(*src != '\0')
+//    {
+//        *dest ++= *src++;
+//    }
+//    *dest = *src;
+//}
+
+//优化2
+//void my_strcpy(char* dest,char* src)
+//{
+//    while(*dest ++= *src++)
+//    {
+//        ;
+//    }
+//}
+
+//优化3 - 增加断言assert
+//void my_strcpy(char* dest,char* src)
+//{
+//    assert(src != NULL);//断言
+//    assert(dest != NULL);//断言
+//    while(*dest++ = *src++)
+//    {
+//        ;
+//    }
+//}
+
+//优化4 - 增加const修饰变量，变为常变量，不能被修改
+//const修饰指针变量 - 如果const放在*左边，修饰的是*p，表示指针指向的内容不能通过指针来改变但是指针变量本身是可以修改的
+//如果const放在*右边，修饰的是指针变量p，表示指针变量不能被改变，但是指针指向的内容可以被改变
+void my_strcpy(char* dest,const char* src)
+{
+    assert(src != NULL);//断言
+    assert(dest != NULL);//断言
+    while(*dest++ = *src++)
+    {
+        ;
+    }
+}
+
+int main()
+{
+    char arr1[20] = "xxxxxx";
+    char arr2[]="hello";
+    //strcpy(arr1,arr2);
+    my_strcpy(arr1,arr2);
+    printf("%s\n",arr1);
+    return 0;
+}
 
 
 
