@@ -14,8 +14,156 @@
 #include "add.h"
 #include "game.h"
 
-//模拟实现strcpy函数
 
+//2023-6-23 操作符作业
+//1、求一个整数二进制中1的个数
+//问题代码 - 无法求负数
+//int NumberOf1(int num)
+//{
+//    int count = 0;
+//    while(num)
+//    {
+//        if(num % 2 == 1)
+//        {
+//            count ++;
+//        }
+//        num = num/2;
+//    }
+//    return count;
+//}
+
+//优化 - 加unsigned变为无符号整型
+//int NumberOf1(unsigned int num)
+//{
+//    int count = 0;
+//    while(num)
+//    {
+//        if(num % 2 == 1)
+//        {
+//            count ++;
+//        }
+//        num = num/2;
+//    }
+//    return count;
+//}
+
+//优化 -
+//int NumberOf1(int num)
+//{
+//    int count = 0;
+//    int i = 0;
+//    for(i = 0;i<32;i++)
+//    {
+//        if(((num>>i)&1) == 1)
+//        {
+//            count ++;
+//        }
+//    }
+//    return count;
+//}
+//方法2
+//int NumberOf1(int num)
+//{
+//    int count = 0;
+//    while(num)
+//    {
+//        num = num &(num-1);
+//        count++;
+//    }
+//    return count;
+//}
+//int main()
+//{
+//    int num = 1;
+//    int ret = NumberOf1(num);
+//    printf("%d\n",ret);
+//    return 0;
+//}
+
+//题目变形 - 写一个代码判断一个数字是不是2的n次方
+//void Fac(num)
+//{
+//        if((num&(num-1)) == 0)
+//        {
+//            printf("Yes\n");
+//        }
+//        else
+//        {
+//            printf("No\n");
+//        }
+//
+//}
+//int main()
+//{
+//    int num = 0;
+//    scanf("%d",&num);
+//    Fac(num);
+//    return 0;
+//}
+
+
+//2、求两个数二进制中不同位的个数
+//int Different(int m,int n)
+//{
+//    int count = 0;
+//    int i = 0;
+//    for(i = 0;i<32;i++)
+//    {
+//      if((((m^n)>>i)&1) == 1)
+//      {
+//          count ++;
+//      }
+//    }
+//    return count;
+//}
+
+//优化
+//int Different(int m,int n)
+//{
+//    int ret = m^n;
+//    int count = 0;
+//    while(ret)
+//    {
+//        ret = ret &(ret-1);
+//        count++;
+//    }
+//    return count;
+//}
+//int main()
+//{
+//    int m = 0;
+//    int n = 0;
+//    scanf("%d%d",&m,&n);
+//    int count =Different(m,n);
+//    printf("count = %d\n",count);
+//    return 0;
+//}
+
+//3、打印整数二进制数中的奇数位和偶数位
+//void print(int num)
+//{
+//    int i = 0;
+//    for(i = 31;i>=1;i-=2)
+//    {
+//        printf("%d ",(num >> i)&1);
+//    }
+//    printf("\n");
+//    for(i = 30;i>=0;i-=2)
+//    {
+//        printf("%d ",(num >> i)&1);
+//    }
+//    printf("\n");
+//}
+//int main()
+//{
+//    int num = 0;
+//    scanf("%d",&num);
+//    print(num);
+//    return 0;
+//}
+//--------------------------------------------------------------------------------------
+
+//模拟实现strcpy函数
 //方法
 //void my_strcpy(char* dest,char* src)
 //{
@@ -58,6 +206,7 @@
 //    }
 //}
 
+
 //优化4 - 增加const修饰变量，变为常变量，不能被修改
 //const修饰指针变量 - 如果const放在*左边，修饰的是*p，表示指针指向的内容不能通过指针来改变但是指针变量本身是可以修改的
 //如果const放在*右边，修饰的是指针变量p，表示指针变量不能被改变，但是指针指向的内容可以被改变
@@ -70,17 +219,69 @@
 //        ;
 //    }
 //}
-//
+
+//优化5 - 改为返回char*类型
+//char* my_strcpy(char* dest,const char* src)
+//{
+//    assert(src != NULL);//断言
+//    assert(dest != NULL);//断言
+//    int ret = dest;
+//    while(*dest++ = *src++)
+//    {
+//        ;
+//    }
+//    return ret;
+//}
+
 //int main()
 //{
 //    char arr1[20] = "xxxxxx";
 //    char arr2[]="hello";
 //    //strcpy(arr1,arr2);
-//    my_strcpy(arr1,arr2);
-//    printf("%s\n",arr1);
+//    //my_strcpy(arr1,arr2);
+//    //printf("%s\n",arr1);
+//    printf("%s\n",my_strcpy(arr1,arr2));  //当改为char*时，可以进行链式访问；
 //    return 0;
 //}
 
+//模拟实现strlen函数
+//size_t  - unsigned int
+//计数器方式
+//size_t my_strlen(const char* str)
+//{
+//    //assert(str != NULL);
+//    assert(str);
+//    size_t count = 0;
+//    while(*str++ != '\0')
+//    {
+//        count ++;
+//    }
+//    return count;
+//}
+
+//指针 - 指针方式
+//size_t my_strlen(const char* str)
+//{
+//    assert(str);
+//    char* end = str;
+//    while(*end ++)
+//    {
+//        ;
+//    }
+//    return (end - str - 1);
+//}
+//int main()
+//{
+//    char arr[] = "hello";
+//    size_t count = 0;
+//    count = my_strlen(arr);
+//    printf("count = %d\n",count);
+//    return 0;
+//}
+
+
+
+//-----------------------------------------------------------------------------
 //2023-6-21
 //调试技巧
 //
