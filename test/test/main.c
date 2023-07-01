@@ -13,52 +13,85 @@
 #include <time.h>
 #include "add.h"
 #include "game.h"
+//进阶
+//2023-7-01  数据的存储（整型和浮点型）
+//字符类型的意义 - 使用这个类型开辟的内存空间的大小（大小决定了使用范围）
+//             - 如何看待内存空间的视角
+//整型家族
+//       - char - unsigned char - signed char //char因为存储的是acsii码
+//       - short - unsigned short [int] - signed short [int]
+//       - int - unsigned int - signed int
+//       - long - unsigned long [int] - signed long [int]
+
+//浮点型家族
+//          - float
+//          - double
+
+//构造类型（自定义类型）
+//                  - struct结构体类型
+//                  - 数组
+//                  - enum枚举
+//                  - union联合体
+
+//指针类型
+
+//空类型
+//      - void - 函数返回类型/函数参数/指针
 
 
-bool canConstruct(char * ransomNote, char * magazine){
-    int r=strlen(ransomNote);
-    int m=strlen(magazine);
-    if(r>m){
-//判断两个字符串长度
-        return false;
-    }
-    int ans[26]={0};
-//创建额外数组
-    for(int i=0;i<r;i++){
-        ans[ransomNote[i]-'a']++;
-        ans[magazine[i]-'a']--;
-//1遍历，ransomNote的元素下标++
-//magezine的元素下标--
-    }
-    if(m>r){
-//判断magazine是否长于ransomNote
-        for(int i=r;i<m;i++){
-//继续遍历，注意是从r开始
-            ans[magazine[i]-'a']--;
-        }
-    }
-    for(int i=0;i<26;i++){
-        if(ans[i]>0)
-//只要大于0就return false,可以是负数，因为magezine可以长于ransomNote
-        return false;
-    }
-    return true;
-}
-
-int main() {
-    char ransomNote[] = "aabbcc";
-    char magazine[] = "abcabc";
-
-    bool result = canConstruct(ransomNote, magazine);
-
-    if (result) {
-        printf("可以构建\n");
-    } else {
-        printf("无法构建\n");
-    }
-
+int main()
+{
+    int a = -10;
     return 0;
 }
+
+//---------------------------------------------------------------------------------------
+
+//bool canConstruct(char * ransomNote, char * magazine){
+//    int r=strlen(ransomNote);
+//    int m=strlen(magazine);
+//    if(r>m){
+////判断两个字符串长度
+//        return false;
+//    }
+//    int ans[26]={0};
+////创建额外数组
+//    for(int i=0;i<r;i++){
+//        ans[ransomNote[i]-'a']++;
+//        ans[magazine[i]-'a']--;
+////1遍历，ransomNote的元素下标++
+////magezine的元素下标--
+//    }
+//    if(m>r){
+////判断magazine是否长于ransomNote
+//        for(int i=r;i<m;i++){
+////继续遍历，注意是从r开始
+//            ans[magazine[i]-'a']--;
+//        }
+//    }
+//    for(int i=0;i<26;i++){
+//        if(ans[i]>0)
+////只要大于0就return false,可以是负数，因为magezine可以长于ransomNote
+//        return false;
+//    }
+//    return true;
+//}
+//
+//int main() {
+//    char ransomNote[] = "aabbcc";
+//    char magazine[] = "abcabc";
+//
+//    bool result = canConstruct(ransomNote, magazine);
+//
+//    if (result) {
+//        printf("可以构建\n");
+//    } else {
+//        printf("无法构建\n");
+//    }
+//
+//    return 0;
+//}
+//---------------------------------------------------------------------------------------
 
 //2023-6-26 初阶考核编程
 //1、写一个算法求：两个正整数的最小公倍数
